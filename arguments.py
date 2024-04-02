@@ -6,58 +6,21 @@ import transformers
 
 @dataclass
 class ModelArguments:
-    checkpoint_path: Optional[str] = field(default='/home/admin1/Models/touchdown-cot-checkpoint-1000')
+    checkpoint_path: Optional[str]
     only_attend_immediate_media: bool = field(default=True)
 
     model_path: Optional[str] = field(default="/home/admin1/Models/OTTER-Image-LLaMA7B-LA-InContext")
-    # model_path: Optional[str] = field(default="/home/admin1/Models/Otter-Image-MPT7B")
     precision: Optional[str] = field(default='fp16')
     device: Optional[str] = field(default='cuda')
 
 
 @dataclass
 class DataArguments:
-    # legacy_navigation_mode: bool = field(default=False)
-    # train_if_data_path: str = field(default='dataset/touchdown_cot/seen/train.json')
-    # eval_if_data_path: str = field(default='dataset/touchdown_cot/seen/dev.json')
-    # eval_split: str = field(default='dev')
-    # dataset: str = field(default='dataset/touchdown/seen')
-
-    # legacy_navigation_mode: bool = field(default=False)
-    # train_if_data_path: str = field(default='dataset/map2seq_cot/seen/train.json')
-    # eval_if_data_path: str = field(default='dataset/map2seq_cot/seen/dev.json')
-    # eval_split: str = field(default='dev')
-    # dataset: str = field(default='dataset/map2seq/seen')
-
     legacy_navigation_mode: bool = field(default=False)
-    train_if_data_path: str = field(default='dataset/map2seq_cot_2aux/seen/train.json')
-    eval_if_data_path: str = field(default='dataset/map2seq_cot_2aux/seen/dev.json')
+    train_if_data_path: str
+    eval_if_data_path: str
     eval_split: str = field(default='dev')
-    dataset: str = field(default='dataset/map2seq/seen')
-
-    # legacy_navigation_mode: bool = field(default=False)
-    # train_if_data_path: str = field(default='dataset/map2seq_cot_new/seen/train.json')
-    # eval_if_data_path: str = field(default='dataset/map2seq_cot_new/seen/dev.json')
-    # eval_split: str = field(default='dev')
-    # dataset: str = field(default='dataset/map2seq/seen')
-
-    # legacy_navigation_mode: bool = field(default=False)
-    # train_if_data_path: str = field(default='dataset/map2seq_cot_new_paradigm/seen/train.json')
-    # eval_if_data_path: str = field(default='dataset/map2seq_cot_new_paradigm/seen/dev.json')
-    # eval_split: str = field(default='dev')
-    # dataset: str = field(default='dataset/map2seq/seen')
-
-    # legacy_navigation_mode: bool = field(default=False)
-    # train_if_data_path: str = field(default='dataset/touchdown_cot_new/seen/train.json')
-    # eval_if_data_path: str = field(default='dataset/touchdown_cot_new/seen/dev.json')
-    # eval_split: str = field(default='dev')
-    # dataset: str = field(default='dataset/touchdown/seen')
-
-    # legacy_navigation_mode: bool = field(default=False)
-    # train_if_data_path: str = field(default='dataset/touchdown_cot_new_paradigm/seen/train.json')
-    # eval_if_data_path: str = field(default='dataset/touchdown_cot_new_paradigm/seen/dev.json')
-    # eval_split: str = field(default='dev')
-    # dataset: str = field(default='dataset/touchdown/seen')
+    dataset: str = field
 
     img_db: str = field(default='/home/admin1/Datasets/touchdown_feature_final')
     store_feature: bool = field(default=True)
@@ -77,14 +40,13 @@ class DataArguments:
 
 @dataclass
 class TrainingArguments(transformers.TrainingArguments):
-    # resume_from_checkpoint: Optional[str] = field(default='/home/admin1/FLAME/touchdown_seen_legacy_llama_feature_lr0.0001/checkpoint-2800')
     learning_rate: float = field(default=1e-4)
 
     output_dir: Optional[str] = field(default='checkpoints')
     optim: str = field(default="adamw_torch")
-    # bf16: bool = field(default=True)
-    # tf32: bool = field(default=True)
-    fp16: bool = field(default=True)
+    bf16: bool = field(default=True)
+    tf32: bool = field(default=True)
+    # fp16: bool = field(default=True)
     model_max_length: int = field(
         default=2048,
         metadata={
