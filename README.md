@@ -1,6 +1,6 @@
 # 🦩 FLAME
 
-[Visit project webpage](https://PaperCodePreview.github.io)
+[Visit project webpage (including DEMO)](https://PaperCodePreview.github.io)
 
 Implementation of FLAME and Urban-VLN-R+ for the paper:
 
